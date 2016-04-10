@@ -15,7 +15,7 @@ public class ScoreChecker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		score += Time.deltaTime;
+		score += Time.deltaTime*2;
 		
 		scoreText.text = "Score : " + (int)score;
 	}

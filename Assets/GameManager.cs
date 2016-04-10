@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	public Sprite orchid_sprite;
 
 	Player player;
+	Shooter shooter;
 	GameObject dialoguePanel;
 	Image portraitImage;
 	Text dialogueText;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour {
 		dialoguePanel.SetActive(true);
 		portraitImage.sprite = orchid_sprite;
 		dialogueText.text = "그럼 슬슬 알갱이를 더 추가해보죠.";
+		shooter.StartShotStarBullet();
 		
 		yield return new WaitForSeconds(2f);
 		portraitImage.sprite = jhj_sprite;
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	IEnumerator Start () {
 		player = FindObjectOfType<Player>();
+		shooter = FindObjectOfType<Shooter>();
 		dialoguePanel = GameObject.Find("DialoguePanel");
 		portraitImage = GameObject.Find("Portrait").GetComponent<Image>();
 		dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
