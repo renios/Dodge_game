@@ -1,16 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class player : MonoBehaviour {
+public class Player : MonoBehaviour {
+	
+	public GameObject barrior;
+	bool canMove;
+	
+	public void SetMove(bool newValue)
+	{
+		canMove = newValue;
+		if ((newValue == true) && (barrior != null))
+			Destroy(barrior);
+	}
 	
 	// Use this for initialization
 	void Start () {
-
+		canMove = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		MoveInputChecker();	
+		if (canMove)
+			MoveInputChecker();	
 	}
 
 	void MoveInputChecker ()
