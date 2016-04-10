@@ -44,6 +44,21 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds(2f);
 		dialoguePanel.SetActive(false);
 	}
+	
+	IEnumerator RayEvent()
+	{
+		dialoguePanel.SetActive(true);
+		portraitImage.sprite = jhj_sprite;
+		dialogueText.text = "잠깐! 뭐 하는거야! 다 보이거든?";
+		shooter.StartShotStarBullet();
+		
+		yield return new WaitForSeconds(2f);
+		portraitImage.sprite = orchid_sprite;
+		dialogueText.text = "...우웅? 오키드는 그런거 몰라요~";
+		
+		yield return new WaitForSeconds(2f);
+		dialoguePanel.SetActive(false);
+	}
 
 	// Use this for initialization
 	IEnumerator Start () {
@@ -60,6 +75,10 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds(5);
 		
 		StartCoroutine(BulletEvent());
+		
+		yield return new WaitForSeconds(15);
+		
+		StartCoroutine(RayEvent());
 	}
 	
 	// Update is called once per frame

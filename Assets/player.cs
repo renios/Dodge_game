@@ -13,6 +13,11 @@ public class Player : MonoBehaviour {
 			Destroy(barrior);
 	}
 	
+	void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.gameObject.tag == "Bullet")
+			Debug.Log("Hit by bullet");
+    }
+	
 	// Use this for initialization
 	void Start () {
 		canMove = false;
