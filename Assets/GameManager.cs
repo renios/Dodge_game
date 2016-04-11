@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour {
 		
 		yield return new WaitForSeconds(2f);
 		portraitImage.sprite = orchid_sprite;
-		dialogueText.text = "...우웅? 오키드는 그런거 몰라요~";
+		dialogueText.text = "...우웅~? 오키드는 그런거 몰라요~";
 		
 		yield return new WaitForSeconds(2f);
 		dialoguePanel.SetActive(false);
