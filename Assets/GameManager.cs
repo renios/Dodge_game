@@ -12,6 +12,17 @@ public class GameManager : MonoBehaviour {
 	GameObject dialoguePanel;
 	Image portraitImage;
 	Text dialogueText;
+	GameObject resultPanel;
+	Text resultText;
+	bool isEnd;
+
+	public void HitHandler()
+	{
+		resultPanel.SetActive(true);
+		resultText.text = FindObjectOfType<ScoreChecker>().GetScore().ToString();
+		Time.timeScale = 0;
+		isEnd = true;
+	}
 
 	IEnumerator StartEvent()
 	{
@@ -67,8 +78,11 @@ public class GameManager : MonoBehaviour {
 		dialoguePanel = GameObject.Find("DialoguePanel");
 		portraitImage = GameObject.Find("Portrait").GetComponent<Image>();
 		dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
+		resultPanel = GameObject.Find("ResultPanel");
+		resultText = GameObject.Find("ResultText").GetComponent<Text>();
 		
 		dialoguePanel.SetActive(false);
+		resultPanel.SetActive(false);
 		
 		yield return StartCoroutine(StartEvent());
 		
@@ -78,11 +92,20 @@ public class GameManager : MonoBehaviour {
 		
 		yield return new WaitForSeconds(15);
 		
-		StartCoroutine(RayEvent());
+		// StartCoroutine(RayEvent());
+	}
+	
+	void Awake()
+	{
+		isEnd = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (Input.GetKeyDown(KeyCode.Space) && isEnd)
+		{
+			Time.timeScale = 1.0f;
+			Application.LoadLevel(Application.loadedLevel);
+		}
 	}
 }

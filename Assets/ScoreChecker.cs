@@ -7,6 +7,11 @@ public class ScoreChecker : MonoBehaviour {
 	Text scoreText;
 	float score;
 
+	public int GetScore()
+	{
+		return (int)score;
+	}
+
 	// Use this for initialization
 	void Start () {
 		scoreText = GameObject.Find("ScoreText").GetComponent<Text>();

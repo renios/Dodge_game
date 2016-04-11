@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	
 	public GameObject barrior;
+	public float speed = 0.8f;
 	bool canMove;
 	
 	public void SetMove(bool newValue)
@@ -15,7 +16,7 @@ public class Player : MonoBehaviour {
 	
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Bullet")
-			Debug.Log("Hit by bullet");
+			FindObjectOfType<GameManager>().HitHandler();
     }
 	
 	// Use this for initialization
@@ -41,6 +42,6 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey(KeyCode.RightArrow))
 			direction += Vector3.right;
 		
-		transform.position += direction * 0.1f;
+		transform.position += direction * 0.1f * speed;
 	}
 }
