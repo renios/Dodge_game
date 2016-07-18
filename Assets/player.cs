@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	
 	public GameObject barrior;
-	public float speed = 0.8f;
+	public float speed;
 	bool canMove;
 	
 	public void SetMove(bool newValue)
@@ -42,6 +42,6 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey(KeyCode.RightArrow))
 			direction += Vector3.right;
 		
-		transform.position += direction * 0.1f * speed;
+		transform.position += direction * Time.deltaTime * speed;
 	}
 }
